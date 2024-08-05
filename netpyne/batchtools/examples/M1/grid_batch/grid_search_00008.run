@@ -1,0 +1,34 @@
+Warning: Could not import rxdmath module
+
+Start time:  2024-08-05 09:58:36.334274
+
+Creating network of 1 cell populations on 1 hosts...
+Distributed population of 1 cells on 1 hosts: {0: [0]}, next: 0
+# Error inserting hd mechanims in soma section! (check mod files are compiled)
+ERROR: Some mechanisms and/or ions were not inserted (for details run with cfg.verbose=True). Make sure the required mod files are compiled.
+Cell 0/0 (gid=0) of pop PT5B, on node 0, 
+Instantiated 1 cells of population PT5B
+  Number of cells on node 0: 1 
+  Done; cell creation time = 0.00 s.
+Making connections...
+  Number of connections on node 0: 0 
+  Done; cell connection time = 0.00 s.
+Adding stims...
+  Created NetStim1 NetStim for cell gid=0
+numprocs=1
+Traceback (most recent call last):
+  File "/home/developer/Code/NetPyNE_Grid/netpyne/netpyne/batchtools/examples/M1/init.py", line 9, in <module>
+    sim.createSimulate(netParams=netParams, simConfig=cfg)
+  File "/home/developer/.local/lib/python3.10/site-packages/netpyne/sim/wrappers.py", line 167, in createSimulate
+    (pops, cells, conns, rxd, stims, simData) = sim.create(netParams, simConfig, output=True)
+  File "/home/developer/.local/lib/python3.10/site-packages/netpyne/sim/wrappers.py", line 51, in create
+    stims = sim.net.addStims()  # add external stimulation to cells (IClamps etc)
+  File "/home/developer/.local/lib/python3.10/site-packages/netpyne/network/stim.py", line 145, in addStims
+    self._addCellStim(params, postCell)  # call method to add connections (sort out synMechs first)
+  File "/home/developer/.local/lib/python3.10/site-packages/netpyne/network/stim.py", line 189, in _addCellStim
+    postCell.addStim(params=params)
+  File "/home/developer/.local/lib/python3.10/site-packages/netpyne/cell/compartCell.py", line 1282, in addStim
+    self.addConn(connParams, netStimParams)
+  File "/home/developer/.local/lib/python3.10/site-packages/netpyne/cell/compartCell.py", line 971, in addConn
+    postTarget = synMechs[i]['hObj']  # local synaptic mechanism
+TypeError: 'NoneType' object is not subscriptable
