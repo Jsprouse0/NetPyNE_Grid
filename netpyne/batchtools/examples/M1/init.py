@@ -2,7 +2,13 @@ from netpyne.batchtools import specs
 from netpyne.batchtools import comm
 from netpyne import sim
 from netParams import netParams, cfg
+from neuron import h
+import os
 import json
+
+script_dir = os.path.dirname(os.path.abspath(__file__))
+hoc_file_path = os.path.join(script_dir, 'mod/x86_64/.libs/libnrnmech.so')
+h.nrn_load_dll(hoc_file_path)
 
 comm.initialize()
 

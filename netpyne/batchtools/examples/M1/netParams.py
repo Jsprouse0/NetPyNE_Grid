@@ -1,9 +1,10 @@
 from netpyne.batchtools import specs
 from cfg import cfg
+from neuron import h, load_mechanisms
 cfg.update_cfg()
 
 
-def pt5b_cell(): # I think this is how this cell is made...there's really nothing in the netParams_cell.py that makes sense
+def pt5b_cell():
     PT5B_cell = {
         'secs': {
             'soma': {
@@ -168,7 +169,7 @@ def initialize_synaptic_mechs(netParams): # Up to date with netParams_cell.py in
     Initialize synaptic mechanisms.
     """
     netParams.synMechParams['AMPA']   = {'mod': 'MyExp2SynBB', 'tau1': 0.05, 'tau2': 5.3, 'e': 0}
-    # netparams.synMechParams['NMDA']   = {'mod': 'MyExp2SynNMDABB','tau1NMDA': 15, 'tau2NMDA': 150, 'r': 1, 'e': 0}  ERROR: Hoc type object has no object 'MyExp2SynNMDABB'?
+    netParams.synMechParams['NMDA']   = {'mod': 'MyExp2SynNMDABB','tau1NMDA': 15, 'tau2NMDA': 150, 'r': 1, 'e': 0}
     netParams.synMechParams['GABAB']  = {'mod': 'MyExp2SynBB', 'tau1': 3.5, 'tau2': 260.9, 'e': -93}
     netParams.synMechParams['GABAA']  = {'mod': 'MyExp2SynBB', 'tau1': 0.07, 'tau2': 18.2, 'e': -80}
     netParams.synMechParams['GABAs']  = {'mod': 'MyExp2SynBB', 'tau1': 2, 'tau2': 100, 'e': -80}

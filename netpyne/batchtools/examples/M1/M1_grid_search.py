@@ -32,7 +32,7 @@ result_grid = search(job_type = 'sh', # or Shell config
        run_config      = run_config,
        label           = 'grid_search',
        output_path     = os.path.join(os.path.dirname(M1_file), "grid_batch"),  
-       checkpoint_path = './ray',
+       checkpoint_path = os.path.join(os.path.dirname(M1_file), "ray"),
        num_samples     = 1,
        metric          = 'epsp',
        mode            = 'min',
@@ -52,13 +52,13 @@ for trial in result_grid:
         results.extend([
             {
                 'Section': section,                                  # Section being tested (e.g., soma, axon_0...etc)
-                'iClamp' : trial_config[f'iclamp.{section}.{i+1}'],  # The iClamp value used in the trial
+                'Weight' : trial_config[f'weight.{section}.{i+1}'],  # The Weight value used in the trial
                 'PT5B'   : trial_results.get('PT5B')[0],             # The PT5B metric result, defaulting to None if not found
                 'Loss'   : trial_results.get('loss')[0]              # The loss metric result, defaulting to None if not found
             }
             for section in sections                                  # Loop through each section (DEND1, DEND2)
             for i in range(2)                                        # Loop through two indices (0, 1) for iClamp values
-            if f'iclamp.{section}.{i+1}' in trial_config             # Check if the iClamp key is in the trial config
+            if f'weight.{section}.{i+1}' in trial_config             # Check if the weight key is in the trial config
         ])
     
     print('Processed trial...')
