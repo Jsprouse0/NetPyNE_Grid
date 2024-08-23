@@ -71,3 +71,9 @@ examples/optunaOptim/simple/
 /examples/NeuroMLImport/test/M1.net.nml
 /examples/NeuroMLImport/test/LEMS_M1.xml
 arm64
+
+netpyne/batchtools/examples/M1/grid_batch/
+
+netpyne/batchtools/examples/M1/ray/variant_generator/
+
+netpyne/batchtools/examples/M1/test.py
